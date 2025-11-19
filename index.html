@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metrix Wheel of Fortune</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Metrix Prize Wheel</h1>
+        
+        <!-- Setup Panel -->
+        <div id="setup-panel">
+            <div class="input-group">
+                <label for="gameId">Game ID:</label>
+                <input type="text" id="gameId" placeholder="e.g. 12345">
+                <button id="fetchGameBtn">Fetch Game & Bagtags</button>
+            </div>
+            
+            <div class="input-group hidden" id="courseInputGroup">
+                <label for="courseId">Course ID (needed for calculation):</label>
+                <input type="text" id="courseId" placeholder="e.g. 9876">
+                <button id="fetchCourseBtn">Fetch Course</button>
+            </div>
+
+            <div id="status-container">
+                <p id="status-message"></p>
+            </div>
+        </div>
+
+        <!-- Main App Area -->
+        <div id="main-app" class="hidden">
+            <div class="layout">
+                
+                <!-- Left Column: Players -->
+                <div class="panel player-panel">
+                    <h2>Players & Ratings</h2>
+                    <p class="instructions">
+                        Verify ratings below. <br>
+                        <strong>Edit manually</strong> if missing (0) or incorrect. <br>
+                        Tickets update automatically.
+                    </p>
+                    
+                    <div class="controls">
+                        <button id="generateWheelBtn" class="action-btn">GENERATE WHEEL</button>
+                    </div>
+
+                    <div id="player-list">
+                        <!-- Player items injected here -->
+                    </div>
+                </div>
+
+                <!-- Middle Column: The Wheel -->
+                <div class="panel wheel-panel">
+                    <canvas id="wheelCanvas" width="500" height="500"></canvas>
+                    <button id="spinBtn" disabled>SPIN THE WHEEL</button>
+                    <div id="current-winner" class="winner-banner"></div>
+                </div>
+
+                <!-- Right Column: Winners -->
+                <div class="panel winner-panel">
+                    <h2>Prize Pickers</h2>
+                    <ul id="winner-list">
+                        <!-- Winners appended here -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
