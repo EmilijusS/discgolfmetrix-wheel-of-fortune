@@ -1,5 +1,5 @@
 // Configuration
-const CORS_PROXY = "https://api.allorigins.win/get?url=";
+const CORS_PROXY = "https://corsproxy.io/?url=";
 const METRIX_API = "https://discgolfmetrix.com/api.php?content=result&id=";
 const METRIX_COURSE_API = "https://discgolfmetrix.com/api.php?content=course&code=XXX&id=";
 const BAGTAG_API = "https://discgolfmetrix.com/api.php?content=bagtag_list&id=2";
@@ -45,8 +45,7 @@ els.fetchGameBtn.addEventListener('click', async () => {
     try {
         const url = `${CORS_PROXY}${encodeURIComponent(METRIX_API + id)}`;
         const response = await fetch(url);
-        const data = await response.json();
-        const json = JSON.parse(data.contents); // allorigins returns JSON string in 'contents'
+        const json = await response.json();
 
         if (!json || !json.Competition) throw new Error("Invalid Game Data");
 
@@ -90,8 +89,7 @@ async function fetchCourseData() {
     try {
         const url = `${CORS_PROXY}${encodeURIComponent(METRIX_COURSE_API + cid)}`;
         const response = await fetch(url);
-        const data = await response.json();
-        const json = JSON.parse(data.contents);
+        const json = await response.json();
 
         // Depending on API response structure for 'course'
         // Assuming json directly contains the params or is an object with them
@@ -131,8 +129,7 @@ async function processPlayers() {
     
     const url = `${CORS_PROXY}${encodeURIComponent(BAGTAG_API)}`;
     const response = await fetch(url);
-    const data = await response.json();
-    const json = JSON.parse(data.contents);
+    const json = await response.json();
     const playerList = json.players
 
     // Fetch ratings for all players
